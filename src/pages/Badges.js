@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Navbar from '../components/Navbar';
 import BadgesList from '../components/BadgesList';
 
 import '../styles/Badges.css';
@@ -10,7 +9,14 @@ import { Link } from 'react-router-dom';
 
 class Badges extends React.Component{
 
-    state = {
+
+    constructor(props){
+      super(props);
+      console.log('1. constructor()'); //Se ejecuta primero el constructor al montar un componente
+
+
+      //el constructor es el lugar recomendado para inicializar el state
+      this.state = {
         data: [
           {
             id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
@@ -45,11 +51,20 @@ class Badges extends React.Component{
         ],
       };
 
+    }
+
+    componentDidMount(){
+      console.log('3. componentDidMount()'); //tercer paso del ciclo de vida
+
+    }
+
     render(){
+      console.log('2. render()') // se monta después del constructor (ejecución)
+
         return (
            
-            <div>
-                 <Navbar />
+            <>
+                 
                  <div className="Badges">
                      <div className="Badges__hero">
                         <div className="Badges__container">
@@ -69,7 +84,7 @@ class Badges extends React.Component{
                          </div>
                      </div>
                  </div>
-            </div>
+            </>
 
         )
            
