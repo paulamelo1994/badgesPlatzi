@@ -17,38 +17,7 @@ class Badges extends React.Component{
 
       //el constructor es el lugar recomendado para inicializar el state
       this.state = {
-        data: [
-          {
-            id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
-            firstName: 'Freda',
-            lastName: 'Grady',
-            email: 'Leann_Berge@gmail.com',
-            jobTitle: 'Legacy Brand Director',
-            twitter: 'FredaGrady22221-7573',
-            avatarUrl:
-              'https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon',
-          },
-          {
-            id: 'd00d3614-101a-44ca-b6c2-0be075aeed3d',
-            firstName: 'Major',
-            lastName: 'Rodriguez',
-            email: 'Ilene66@hotmail.com',
-            jobTitle: 'Human Research Architect',
-            twitter: 'MajorRodriguez61545',
-            avatarUrl:
-              'https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon',
-          },
-          {
-            id: '63c03386-33a2-4512-9ac1-354ad7bec5e9',
-            firstName: 'Daphney',
-            lastName: 'Torphy',
-            email: 'Ron61@hotmail.com',
-            jobTitle: 'National Markets Officer',
-            twitter: 'DaphneyTorphy96105',
-            avatarUrl:
-              'https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon',
-          },
-        ],
+        data: [],
       };
 
     }
@@ -56,10 +25,68 @@ class Badges extends React.Component{
     componentDidMount(){
       console.log('3. componentDidMount()'); //tercer paso del ciclo de vida
 
+      //se añade una promesa para incluir la data
+      //Al cambiar la información inicial se vuelve a llamar a render()
+
+      this.timeOutId = setTimeout(()=>{
+        this.setState({
+          data: [
+            {
+              id: '2de30c42-9deb-40fc-a41f-05e62b5939a7',
+              firstName: 'Freda',
+              lastName: 'Grady',
+              email: 'Leann_Berge@gmail.com',
+              jobTitle: 'Legacy Brand Director',
+              twitter: 'FredaGrady22221-7573',
+              avatarUrl:
+                'https://www.gravatar.com/avatar/f63a9c45aca0e7e7de0782a6b1dff40b?d=identicon',
+            },
+            {
+              id: 'd00d3614-101a-44ca-b6c2-0be075aeed3d',
+              firstName: 'Major',
+              lastName: 'Rodriguez',
+              email: 'Ilene66@hotmail.com',
+              jobTitle: 'Human Research Architect',
+              twitter: 'MajorRodriguez61545',
+              avatarUrl:
+                'https://www.gravatar.com/avatar/d57a8be8cb9219609905da25d5f3e50a?d=identicon',
+            },
+            {
+              id: '63c03386-33a2-4512-9ac1-354ad7bec5e9',
+              firstName: 'Daphney',
+              lastName: 'Torphy',
+              email: 'Ron61@hotmail.com',
+              jobTitle: 'National Markets Officer',
+              twitter: 'DaphneyTorphy96105',
+              avatarUrl:
+                'https://www.gravatar.com/avatar/e74e87d40e55b9ff9791c78892e55cb7?d=identicon',
+            },
+          ],
+        
+        })
+      }, 3000) 
+
+    };
+
+    componentDidUpdate(prevProps, prevState){
+      //es llamado al actualizar el componente. Recibe los props y el state que teníamos antes de la actualización
+      console.log('5. componentDidUpdate()');
+      //imprimimos los valores anteriores y los actualizados.
+      console.log({prevProps: prevProps, prevState: prevState});
+      console.log({props: this.props, state: this.state});
+
+    }
+
+    componentWillUnmount(){
+      //se ejecuta justo antes de que el componente salga del DOM
+      console.log('6. componentWillUnmount()');
+
+      //se limpia el timeout por si se desmonta el componente antes de tiempo.
+      clearTimeout(this.timeOutId);
     }
 
     render(){
-      console.log('2. render()') // se monta después del constructor (ejecución)
+      console.log('2/4. render()') // se monta después del constructor (ejecución)
 
         return (
            
