@@ -17,7 +17,9 @@ class Badges extends React.Component{
 
       //el constructor es el lugar recomendado para inicializar el state
       this.state = {
-        data: [],
+        
+        data: []
+
       };
 
     }

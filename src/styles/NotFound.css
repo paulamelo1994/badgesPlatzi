@@ -1,0 +1,10 @@
+.NotFound__container {
+  background: #ffffff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 23%);
+  border-radius: 5px;
+  display: -webkit-flex;
+  padding: 1rem;
+  width: 70%;
+  align-items: center;
+  margin: 0 auto;
+}
